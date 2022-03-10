@@ -36,7 +36,7 @@ export class UsersService {
         const userExist = await this.checkUserExists(email);
         if (userExist) {
             throw new UnprocessableEntityException(
-                '해당 이메일로는 가입할 수 없습니다.',
+                '해당 이메일 또는 네임으로는 가입할 수 없습니다.',
             );
         }
 
