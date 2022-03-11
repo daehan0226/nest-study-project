@@ -16,8 +16,8 @@ export class UsersService {
         private connection: Connection,
     ) {}
 
-    findAll() {
-        return `This action returns all users`;
+    async findAll() {
+        return await this.usersRepository.find({});
     }
 
     findOne(id: number) {
