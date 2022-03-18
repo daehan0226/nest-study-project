@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
-import { EmailService } from 'src/email/email.service';
+import { EmailService } from '../email/email.service';
 import * as bcrypt from 'bcryptjs';
 import { UpdateUserDto } from './dto/update-user.dto';
 
@@ -21,7 +21,11 @@ export class UsersService {
     }
 
     findOne(id: number) {
-        return `This action returns a #${id} user`;
+        return this.usersRepository.findOne(id);
+    }
+
+    findByUsername(username: string) {
+        return this.usersRepository.findOne({ name: username });
     }
 
     update(id: number, updateUserDto: UpdateUserDto) {
